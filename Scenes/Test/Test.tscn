@@ -1,0 +1,83 @@
+[gd_scene load_steps=8 format=3 uid="uid://csxq1rftvlpd8"]
+
+[ext_resource type="Texture2D" uid="uid://c8o02b68ggo58" path="res://Assets/scene/colored_castle.png" id="1_rd7va"]
+[ext_resource type="PhysicsMaterial" uid="uid://dbqodi4p745nh" path="res://Resources/BounceMat.tres" id="2_47tj2"]
+[ext_resource type="Texture2D" uid="uid://bmydcsvhdiw7b" path="res://Assets/player/parrot.png" id="2_kjggp"]
+[ext_resource type="Texture2D" uid="uid://l4wu7h1ea2pl" path="res://Assets/env/elementWood015.png" id="3_m1fo2"]
+[ext_resource type="Script" path="res://Scenes/Test/Bird2.cs" id="4_eux8t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c0spv"]
+radius = 30.0666
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_704i3"]
+size = Vector2(437, 32)
+
+[node name="Test" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(583, 321)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("1_rd7va")
+
+[node name="Bird" type="RigidBody2D" parent="."]
+position = Vector2(288, 544)
+physics_material_override = ExtResource("2_47tj2")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bird"]
+scale = Vector2(0.24, 0.24)
+texture = ExtResource("2_kjggp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bird"]
+shape = SubResource("CircleShape2D_c0spv")
+
+[node name="Bird2" type="RigidBody2D" parent="." node_paths=PackedStringArray("_label", "_timer")]
+position = Vector2(409, 267)
+input_pickable = true
+physics_material_override = ExtResource("2_47tj2")
+freeze = true
+script = ExtResource("4_eux8t")
+_label = NodePath("Label")
+_timer = NodePath("Timer")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bird2"]
+scale = Vector2(0.24, 0.24)
+texture = ExtResource("2_kjggp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bird2"]
+shape = SubResource("CircleShape2D_c0spv")
+
+[node name="Label" type="Label" parent="Bird2"]
+offset_left = -62.0
+offset_top = -74.0
+offset_right = 62.0
+offset_bottom = -40.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "adasdasda"
+
+[node name="Timer" type="Timer" parent="Bird2"]
+wait_time = 6.0
+one_shot = true
+autostart = true
+
+[node name="Bird3" type="RigidBody2D" parent="."]
+position = Vector2(428, 433)
+physics_material_override = ExtResource("2_47tj2")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bird3"]
+scale = Vector2(0.24, 0.24)
+texture = ExtResource("2_kjggp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bird3"]
+shape = SubResource("CircleShape2D_c0spv")
+
+[node name="Block" type="StaticBody2D" parent="."]
+position = Vector2(362, 598)
+
+[node name="Sprite2D" type="Sprite2D" parent="Block"]
+scale = Vector2(2, 0.5)
+texture = ExtResource("3_m1fo2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Block"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_704i3")
