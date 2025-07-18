@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://c8inctktpnu7l"]
+[gd_scene load_steps=8 format=3 uid="uid://c8inctktpnu7l"]
 
+[ext_resource type="Script" path="res://Scenes/Animal/Animal.cs" id="1_ck5t2"]
 [ext_resource type="Texture2D" uid="uid://bmydcsvhdiw7b" path="res://Assets/player/parrot.png" id="1_j83p2"]
 [ext_resource type="Texture2D" uid="uid://c01eaxrmhil7r" path="res://Assets/items/arrow.png" id="2_ywbir"]
 [ext_resource type="AudioStream" uid="uid://b3fo7ei55r5qd" path="res://Assets/audio/stretch2.ogg" id="3_poml2"]
@@ -9,9 +10,16 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_igdtn"]
 radius = 19.0263
 
-[node name="Animal" type="RigidBody2D"]
+[node name="Animal" type="RigidBody2D" node_paths=PackedStringArray("_label", "_stretchSound", "_launchSound", "_kickSound", "_arrow", "_visibleOnScreenNotifier")]
 input_pickable = true
 freeze = true
+script = ExtResource("1_ck5t2")
+_label = NodePath("DebugLabel")
+_stretchSound = NodePath("StretchSound")
+_launchSound = NodePath("LaunchSound")
+_kickSound = NodePath("KickSound")
+_arrow = NodePath("Arrow")
+_visibleOnScreenNotifier = NodePath("VisibleOnScreenNotifier2D")
 
 [node name="Parrot" type="Sprite2D" parent="."]
 scale = Vector2(0.15, 0.15)
