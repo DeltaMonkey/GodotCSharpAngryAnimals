@@ -10,11 +10,11 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_igdtn"]
 radius = 19.0263
 
-[node name="Animal" type="RigidBody2D" node_paths=PackedStringArray("_label", "_stretchSound", "_launchSound", "_kickSound", "_arrow", "_visibleOnScreenNotifier")]
+[node name="Animal" type="RigidBody2D" node_paths=PackedStringArray("_debugLabel", "_stretchSound", "_launchSound", "_kickSound", "_arrow", "_visibleOnScreenNotifier")]
 input_pickable = true
 freeze = true
 script = ExtResource("1_ck5t2")
-_label = NodePath("DebugLabel")
+_debugLabel = NodePath("DebugLabel")
 _stretchSound = NodePath("StretchSound")
 _launchSound = NodePath("LaunchSound")
 _kickSound = NodePath("KickSound")
