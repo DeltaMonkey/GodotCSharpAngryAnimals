@@ -8,6 +8,9 @@ public partial class Animal : RigidBody2D
 	private static readonly Vector2 DRAG_LIM_MAX = new Vector2(0, 60);
 	private static readonly Vector2 DRAG_LIM_MIN = new Vector2(-60, 0);
 
+	private const float IMPULSE_MULT = 20.0f;
+	private const float IMPULSE_MAX = 1200.0f;
+
 	[Export] private Label _debugLabel;
 	[Export] private AudioStreamPlayer2D _stretchSound;
 	[Export] private AudioStreamPlayer2D _launchSound;
@@ -64,11 +67,17 @@ public partial class Animal : RigidBody2D
 		_arrow.Show();
 	}
 
+	private Vector2 CalculateImpulse()
+	{
+		return _draggedVector * -IMPULSE_MULT;
+	}
+
 	private void StartRelease()
 	{
 		_arrow.Hide();
 		_launchSound.Play();
 		Freeze = false;
+		ApplyCentralImpulse(CalculateImpulse());
 	}
 
 	private void ConstrainDragWithinLimits()
@@ -109,6 +118,17 @@ public partial class Animal : RigidBody2D
 			
 	}
 
+	private void UpdateArrowScale()
+	{
+		float impulseLength = CalculateImpulse().Length();
+		float scalePercentage = impulseLength / IMPULSE_MAX;
+		_arrow.Scale = new Vector2(
+			(_arrowScaleX * scalePercentage) + _arrowScaleX,
+			_arrow.Scale.Y
+		);
+		_arrow.Rotation = (_start - Position).Angle();
+	}
+
 	private void HandleDragging()
 	{
 		if (DetectRelease())
@@ -117,6 +137,7 @@ public partial class Animal : RigidBody2D
 		UpdateDraggedVector();
 		PlayStretchSound();
 		ConstrainDragWithinLimits();
+		UpdateArrowScale();
 	}
 
 	private void UpdateState()

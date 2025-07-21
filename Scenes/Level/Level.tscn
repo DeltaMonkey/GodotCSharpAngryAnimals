@@ -11,4 +11,4 @@ scale = Vector2(1.25, 1.25)
 texture = ExtResource("1_6dtnu")
 
 [node name="Animal" parent="Sprite2D" instance=ExtResource("2_m40xy")]
-position = Vector2(-362.4, 5.6)
+position = Vector2(-361.6, 5.6)
