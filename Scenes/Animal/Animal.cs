@@ -65,8 +65,10 @@ public partial class Animal : RigidBody2D
 	}
 
 	private void StartRelease()
-	{ 
-		
+	{
+		_arrow.Hide();
+		_launchSound.Play();
+		Freeze = false;
 	}
 
 	private void ConstrainDragWithinLimits()
@@ -90,8 +92,28 @@ public partial class Animal : RigidBody2D
 		_draggedVector = GetGlobalMousePosition() - _dragStart;
 	}
 
+	private bool DetectRelease()
+	{
+		if (_state == AnimalState.DRAG && Input.IsActionJustReleased("drag"))
+		{
+			ChangeState(AnimalState.RELEASE);
+			GD.Print("Released");
+			return true;
+		}
+
+		return false;
+
+		// did we release "drag" and are we in drag state
+		// if so, set state to RELEASE and return true
+		// otherwise return false
+			
+	}
+
 	private void HandleDragging()
 	{
+		if (DetectRelease())
+			return;
+
 		UpdateDraggedVector();
 		PlayStretchSound();
 		ConstrainDragWithinLimits();
