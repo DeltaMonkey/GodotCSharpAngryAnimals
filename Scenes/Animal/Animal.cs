@@ -115,7 +115,7 @@ public partial class Animal : RigidBody2D
 		// did we release "drag" and are we in drag state
 		// if so, set state to RELEASE and return true
 		// otherwise return false
-			
+
 	}
 
 	private void UpdateArrowScale()
@@ -177,12 +177,19 @@ public partial class Animal : RigidBody2D
 		}
 	}
 
-    private void OnSleepingStateChanged()
-    {
-    }
+	private void OnSleepingStateChanged()
+	{
+	}
 
 	private void OnScreenExited()
-    {
+	{
 		GD.Print("OnScreenExited");
-    }
+		Die();
+	}
+
+	private void Die()
+	{
+		SignalManager.EmitOnAnimalDied();
+		QueueFree();
+	}
 }
