@@ -24,6 +24,7 @@ public partial class Animal : RigidBody2D
 	private Vector2 _dragStart = Vector2.Zero;
 	private Vector2 _draggedVector = Vector2.Zero;
 	private Vector2 _lastDraggedVector = Vector2.Zero;
+	private int _lastColissionCount = 0;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -140,6 +141,21 @@ public partial class Animal : RigidBody2D
 		UpdateArrowScale();
 	}
 
+	private void PlayKickSoundOnColission()
+	{
+		if (_lastColissionCount == 0 && GetContactCount() > 0 && !_kickSound.Playing)
+		{
+			_kickSound.Play();
+		}
+
+		_lastColissionCount = GetContactCount();
+	}
+
+	private void HandleFlight()
+	{
+		PlayKickSoundOnColission();
+	}
+
 	private void UpdateState()
 	{
 		switch (_state)
@@ -148,11 +164,12 @@ public partial class Animal : RigidBody2D
 				HandleDragging();
 				break;
 			case AnimalState.RELEASE:
+				HandleFlight();
 				break;
 		}
 	}
 
-	private void ChangeState(AnimalState newState)
+    private void ChangeState(AnimalState newState)
 	{
 		_state = newState;
 
@@ -179,6 +196,17 @@ public partial class Animal : RigidBody2D
 
 	private void OnSleepingStateChanged()
 	{
+		if (Sleeping)
+		{
+			foreach (Node2D body in GetCollidingBodies())
+			{
+				if (body is Cup cup)
+				{
+					cup.Die();
+				}
+			}
+			CallDeferred("Die");
+		}
 	}
 
 	private void OnScreenExited()
