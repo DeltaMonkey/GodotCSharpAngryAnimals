@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://yeyc5qbfofnx"]
+
+[ext_resource type="Texture2D" uid="uid://dl8ulb23vxcnp" path="res://Assets/env/MainBG.png" id="1_sq1pc"]
+[ext_resource type="AudioStream" uid="uid://bfhk7e0qq4cwi" path="res://Assets/audio/birdsong.wav" id="2_lvddg"]
+[ext_resource type="LabelSettings" uid="uid://h1u276cst8a1" path="res://Resources/LG_Blue_96.tres" id="3_02s17"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_sq1pc")
+expand_mode = 3
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_lvddg")
+autoplay = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -65.0
+offset_top = 32.0
+offset_right = 65.0
+offset_bottom = 55.0
+grow_horizontal = 2
+rotation = 0.0436332
+text = "ANGRY ANIMALS"
+label_settings = ExtResource("3_02s17")
+horizontal_alignment = 1
+vertical_alignment = 1
