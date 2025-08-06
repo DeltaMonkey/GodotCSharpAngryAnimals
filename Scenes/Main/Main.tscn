@@ -60,9 +60,12 @@ theme_override_constants/separation = 48
 
 [node name="LevelButton" parent="HB" instance=ExtResource("4_felu5")]
 layout_mode = 2
+_levelNumber = 1
 
 [node name="LevelButton2" parent="HB" instance=ExtResource("4_felu5")]
 layout_mode = 2
+_levelNumber = 2
 
 [node name="LevelButton3" parent="HB" instance=ExtResource("4_felu5")]
 layout_mode = 2
+_levelNumber = 3
