@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://yeyc5qbfofnx"]
+[gd_scene load_steps=5 format=3 uid="uid://yeyc5qbfofnx"]
 
 [ext_resource type="Texture2D" uid="uid://dl8ulb23vxcnp" path="res://Assets/env/MainBG.png" id="1_sq1pc"]
 [ext_resource type="AudioStream" uid="uid://bfhk7e0qq4cwi" path="res://Assets/audio/birdsong.wav" id="2_lvddg"]
 [ext_resource type="LabelSettings" uid="uid://h1u276cst8a1" path="res://Resources/LG_Blue_96.tres" id="3_02s17"]
+[ext_resource type="PackedScene" uid="uid://cakqnr0qw51sy" path="res://Scenes/LevelButton/LevelButton.tscn" id="4_felu5"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -41,3 +42,27 @@ text = "ANGRY ANIMALS"
 label_settings = ExtResource("3_02s17")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="HB" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 48
+
+[node name="LevelButton" parent="HB" instance=ExtResource("4_felu5")]
+layout_mode = 2
+
+[node name="LevelButton2" parent="HB" instance=ExtResource("4_felu5")]
+layout_mode = 2
+
+[node name="LevelButton3" parent="HB" instance=ExtResource("4_felu5")]
+layout_mode = 2
