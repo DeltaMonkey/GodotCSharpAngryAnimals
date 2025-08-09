@@ -24,6 +24,8 @@ public partial class LevelButton : TextureButton
     private void OnPressed()
     {
 		GD.Print($"Selected:{_levelNumber}");
+		ScoreManager.SetLevelSelected(_levelNumber);
+		GetTree().ChangeSceneToFile($"res://Scenes/Level/Level{_levelNumber}.tscn");
     }
 
 

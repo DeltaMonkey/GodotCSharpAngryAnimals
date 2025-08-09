@@ -12,16 +12,24 @@ public partial class Level : Node2D
 		SignalManager.Instance.OnAnimalDied += OnAnimalDied;
 	}
 
-    private void OnAnimalDied()
-    {
+	private void OnAnimalDied()
+	{
 		Animal newAnimal = (Animal)_animalScene.Instantiate();
 		newAnimal.Position = _animalStart.Position;
 		AddChild(newAnimal);
-    }
+	}
 
-    public override void _ExitTree()
-    {
-        SignalManager.Instance.OnAnimalDied -= OnAnimalDied;
+	public override void _ExitTree()
+	{
+		SignalManager.Instance.OnAnimalDied -= OnAnimalDied;
+	}
+
+	public override void _Process(double delta)
+	{
+		if (Input.IsKeyPressed(Key.Q))
+		{
+			GetTree().ChangeSceneToFile("res://Scenes/Main/Main.tscn");
+		}
     }
 
 }
