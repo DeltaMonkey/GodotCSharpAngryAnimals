@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://cw4t82dmejxau"]
+
+[ext_resource type="LabelSettings" uid="uid://txd61sp2s1mh" path="res://Resources/LG_Grey_48.tres" id="1_itjm8"]
+[ext_resource type="LabelSettings" uid="uid://h1u276cst8a1" path="res://Resources/LG_Blue_96.tres" id="2_v3ys7"]
+[ext_resource type="LabelSettings" uid="uid://st1c4rg1i3to" path="res://Resources/LG_White_48.tres" id="3_k546a"]
+[ext_resource type="AudioStream" uid="uid://bwcptlv12yvwt" path="res://Assets/audio/jazzyfrenchy.mp3" id="4_kj44p"]
+
+[node name="GameUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MC" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MC"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="LevelLabel" type="Label" parent="MC/VBoxContainer"]
+layout_mode = 2
+text = "LEVEL 0"
+label_settings = ExtResource("1_itjm8")
+
+[node name="AttemptsLabel" type="Label" parent="MC/VBoxContainer"]
+layout_mode = 2
+text = "ATTEMPTS 0"
+label_settings = ExtResource("1_itjm8")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MC"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="LevelCompleteLabel" type="Label" parent="MC/VBoxContainer2"]
+layout_mode = 2
+text = "LEVEL COMPLETE"
+label_settings = ExtResource("2_v3ys7")
+horizontal_alignment = 1
+
+[node name="PressSpaceButton" type="Label" parent="MC/VBoxContainer2"]
+layout_mode = 2
+text = "PRESS SPACE"
+label_settings = ExtResource("3_k546a")
+horizontal_alignment = 1
+
+[node name="GameOverMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_kj44p")
