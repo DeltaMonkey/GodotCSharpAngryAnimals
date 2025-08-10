@@ -10,6 +10,7 @@ public partial class Level : Node2D
 	public override void _Ready()
 	{
 		SignalManager.Instance.OnAnimalDied += OnAnimalDied;
+		OnAnimalDied();
 	}
 
 	private void OnAnimalDied()
