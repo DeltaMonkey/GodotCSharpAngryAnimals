@@ -14,7 +14,7 @@ public partial class LevelButton : TextureButton
 	public override void _Ready()
 	{
 		_levelLabel.Text = _levelNumber.ToString();
-		_scoreLabel.Text = ScoreManager.GetLevelBestScore().ToString("D4");
+		_scoreLabel.Text = ScoreManager.GetLevelBestScore(_levelNumber).ToString("D4");
 
 		MouseEntered += OnMouseEntered;
 		MouseExited += OnMouseExited;

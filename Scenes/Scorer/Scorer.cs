@@ -30,6 +30,7 @@ public partial class Scorer : Node
 		{
 			SignalManager.EmitOnLevelCompleted();
 			GD.Print("Level Completed");
+			ScoreManager.SetScoreForLevel(ScoreManager.GetLevelSelected(), _attempts);
 		}
 	}
 
