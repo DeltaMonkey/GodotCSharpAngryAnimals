@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 SignalManager="*res://Globals/SignalManager.cs"
 ScoreManager="*res://Globals/ScoreManager.cs"
+GameManager="*res://Globals/GameManager.cs"
 
 [display]
 

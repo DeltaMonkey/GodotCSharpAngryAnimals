@@ -31,6 +31,5 @@ public partial class Level : Node2D
 		{
 			GetTree().ChangeSceneToFile("res://Scenes/Main/Main.tscn");
 		}
-    }
-
+	}
 }
